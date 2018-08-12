@@ -1,0 +1,24 @@
+---
+# tasks file for spotbugs
+
+# install SpotBugs
+- name: download SpotBugs from official site
+  get_url:
+    url: "http://repo.maven.apache.org/maven2/com/github/spotbugs/spotbugs/{{ spotbugs_version }}/spotbugs-{{ spotbugs_version }}.tgz"
+    dest: /tmp
+    mode: 0440
+
+- name: make directory for SpotBugs
+  file: path=/opt/spotbugs state=directory mode=0775
+
+- name: unarchive SpotBugs
+  unarchive:
+    src: "/tmp/spotbugs-{{ spotbugs_version }}.tgz"
+    dest: /opt/spotbugs
+    copy: no
+
+- name: make symbolic links for SpotBugs
+  file: src='/opt/spotbugs/spotbugs-{{ spotbugs_version }}' dest='/opt/spotbugs/current' state=link
+
+- name: be sure enviroment valiable is configured
+  template: src=spotbugs.sh.j2 dest=/etc/profile.d/spotbugs.sh

@@ -23,7 +23,7 @@ Dependencies
 
 This role depends on:
 
-* redtail83.java-gui
+* redtail83.java_gui
 
 
 Example Playbook

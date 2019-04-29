@@ -14,7 +14,7 @@ Role Variables
 Here is the list of all variables for this role.
 ```yml
 # SpotBugs version
-spotbugs_version: 3.1.11
+spotbugs_version: 3.1.12
 ```
 
 
